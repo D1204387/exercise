@@ -1,0 +1,66 @@
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+}
+
+.title{
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.image-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3列，每列宽度相同 */
+    gap: 2px;
+    margin: auto; /* 水平居中 */
+}
+
+@media(max-width: 600px){
+    .image-container{
+        grid-template-columns: 1fr;
+        /* 视口宽度小于 600px 时，只剩1列 */
+    }
+}
+.column{
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.image-box{
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin: 1px;
+    overflow: hidden;
+}
+
+.bg {
+    background-color: rgba(57, 57, 57, 0); /*設置a=0,表示背景顏色為透明,不可見*/
+    background-size: 0; /*背景圖片的大小為 0，即不可見*/
+    position: absolute; /*設置了絕對定位*/
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.image-container img {
+    width: 100%;
+    /*min-width: 60px;*/
+    height: auto;
+    margin: 1px;
+
+}
+.bg:hover {
+    background-color: rgba(57, 57, 57, 0.5); /*元素的背景顏色為半透明的深灰色。*/
+    background-size: 100%; /*背景圖片的大小設置為與元素大小相同，即填滿整個元素。*/
+    transition: all 0.5s ease-in-out; /*使背景色和背景大小的變化在 0.5 秒內以緩慢且平滑的方式完成，使用了淡入淡出的效果。*/
+    transform: scale(1.0); /元素在懸停時保持原始大小，不進行任何縮放。*/
+}
+
+
+
