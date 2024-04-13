@@ -1,0 +1,29 @@
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+}
+.title{
+    font-size: 20px; /*title元素的字體大小為20像素*/
+    display: flex; /*title元素設成使用Flexbox佈局*/
+    justify-content: center; /*title 元素內容水平居中顯示*/
+    margin-bottom: 10px; /*title元素的底部添加一個 10像素的外邊距，與下面的元素產生間距*/
+}
+.image-container{
+    column-count: 3;
+    gap: 2px;
+    max-width: 1280px;
+    margin: 0 auto;
+
+}
+
+.image-box{
+    width:100%;
+    height: auto;
+
+}
+.image-container img{
+    width:100%;
+    height: auto;
+}
