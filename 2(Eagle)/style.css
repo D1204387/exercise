@@ -1,0 +1,49 @@
+body{
+    height:100%
+}
+.container{
+    height: 100%;
+    background-color: yellowgreen;
+  }
+.todo-title{
+    font-weight: bold;
+    text-align: center;
+
+}
+.todo-Body{
+    display: flex;
+    justify-content: flex-start;
+}
+.todo-item{
+    color: #272727;
+    font-weight: bold;
+    font-style: italic;
+}
+#addButton{
+    border: white;
+    border-radius: 5px;
+}
+#editButton{
+    background-color: green;
+    border-radius: 50px;
+}
+#deleteButton{
+    background-color: red;
+    border-radius: 50px;
+}
+#clearAllButton{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    color:red;
+    background-color: antiquewhite;
+    border: white;
+    border-radius: 2px;
+}
+.todo-Bottom{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width:100%;
+
+}
