@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <div class="todo-title">
+        <label for="todoText">待辦事項清單</label><br>
+    </div>
+    <div class="todo-body">
+        <input type="text" id="todoText" placeholder="例如:買早餐">
+        <button id="addButton" onclick="handleAddButtonClick();">新增</button>
+    </div>
+</div>
+<div id="todoList" class="list-items"></div>
+<button id="clearAll" onclick="handleClearAllButtonClick();">清除所有項目</button>
+<script src="script.js"></script>
+</body>
+</html>
