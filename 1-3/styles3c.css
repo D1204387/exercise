@@ -32,27 +32,30 @@ body{
 }
 .image-box{
     position: relative;
-    width: 100%;
-    height: auto;
-    margin: 1px;
-    overflow: hidden;
+    display: flex;
+    padding: 1px 0;
+    /*width: 100%;*/
+    /*height: auto;*/
+    /*margin: 1px;*/
+    /*overflow: hidden;*/
 }
 
 .bg {
     background-color: rgba(57, 57, 57, 0); /*設置a=0,表示背景顏色為透明,不可見*/
     background-size: 0; /*背景圖片的大小為 0，即不可見*/
     position: absolute; /*設置了絕對定位*/
-    top: 0;
+    top: 1;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 2px);
 }
 
 .image-container img {
     width: 100%;
     /*min-width: 60px;*/
-    height: auto;
-    margin: 1px;
+    /*height: auto;*/
+    /*margin: 1px;*/
+    object-fit: cover;
 
 }
 .bg:hover {

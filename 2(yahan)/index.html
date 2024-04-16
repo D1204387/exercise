@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>待辦事項清單</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        #todoList {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        #todoList li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        button {
+            cursor: pointer;
+            padding: 5px 10px;
+            margin-left: 10px;
+        }
+
+        /* 調整輸入框和按鈕樣式 */
+        #todoInput {
+            padding: 5px 10px;
+            width: 300px;
+        }
+
+        #actionButton {
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+
+<body>
+<h1>待辦事項清單</h1>
+
+<div>
+    <input type="text" id="todoInput" placeholder="新增或編輯待辦事項" onkeydown="handleEnter(event)" />
+    <button id="actionButton" onclick="addOrUpdateTodo()">新增</button>
+</div>
+
+<ul id="todoList"></ul>
+
+<div>
+    <button id="deleteAllButton" onclick="deleteAllTodos()">刪除全部項目</button>
+</div>
+
+<script>
+    let editingTodoItem = null;
+
+    // 處理鍵盤事件的函數
+    function handleEnter(event) {
+        // 如果按下回車鍵（事件代碼 13），則調用 addOrUpdateTodo 函數
+        if (event.keyCode === 13) {
+            event.preventDefault(); // 防止默認行為（表單提交）
+            addOrUpdateTodo();
+        }
+    }
+
+    function addOrUpdateTodo() {
+        const todoInput = document.getElementById('todoInput');
+        const actionButton = document.getElementById('actionButton');
+        const todoText = todoInput.value.trim();
+
+        if (todoText === '') {
+            return;
+        }
+
+        if (editingTodoItem) {
+            // 如果正在編輯待辦事項，則更新文本
+            const todoTextElement = editingTodoItem.querySelector('.todo-text');
+            todoTextElement.textContent = todoText;
+
+            // 完成編輯後重置狀態
+            editingTodoItem = null;
+            actionButton.textContent = '新增';
+            todoInput.value = ''; // 清空輸入欄位
+        } else {
+            // 新增待辦事項
+            const todoList = document.getElementById('todoList');
+            const newTodoItem = document.createElement('li');
+            newTodoItem.innerHTML = `
+                    <span class="todo-text">${todoText}</span>
+                    <div>
+                        <button onclick="editTodo(this)">編輯</button>
+                        <button onclick="removeTodo(this)">刪除</button>
+                    </div>
+                `;
+            todoList.appendChild(newTodoItem);
+            todoInput.value = ''; // 清空輸入欄位
+        }
+    }
+
+    function editTodo(buttonElement) {
+        const todoItem = buttonElement.parentElement.parentElement;
+        const todoTextElement = todoItem.querySelector('.todo-text');
+        const todoInput = document.getElementById('todoInput');
+        const actionButton = document.getElementById('actionButton');
+
+        // 將待辦事項文本填入輸入框
+        todoInput.value = todoTextElement.textContent;
+
+        // 設置正在編輯的待辦事項項目
+        editingTodoItem = todoItem;
+
+        // 將按鈕文字更改為“編輯”
+        actionButton.textContent = '編輯';
+    }
+
+    function removeTodo(buttonElement) {
+        const todoItem = buttonElement.parentElement.parentElement;
+        todoItem.remove();
+    }
+
+    function deleteAllTodos() {
+        // 刪除所有待辦事項
+        const todoList = document.getElementById('todoList');
+        todoList.innerHTML = ''; // 清空待辦事項清單的內容
+    }
+
+
+</script>
+</body>
+
+</html>
